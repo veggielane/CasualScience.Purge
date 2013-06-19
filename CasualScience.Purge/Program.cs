@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace CasualScience.Purge
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Purging: {0}", Directory.GetCurrentDirectory());
+            var purged = new Purge(Directory.GetCurrentDirectory()).Run();
+            Console.WriteLine("Purged: {0} Files", purged.Count());
         }
     }
 }
