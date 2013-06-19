@@ -7,9 +7,16 @@ namespace CasualScience.Purge
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Purging: {0}", Directory.GetCurrentDirectory());
-            var purged = new Purge(Directory.GetCurrentDirectory()).Run();
-            Console.WriteLine("Purged: {0} Files", purged.Count());
+            var dir = args.Length == 1 ? args[0] : Directory.GetCurrentDirectory();
+            if(Directory.Exists(dir))
+            {
+                Console.WriteLine("Purging: {0}", dir);
+                var purged = new Purge(dir).Run();
+                Console.WriteLine("Purged: {0} Files", purged.Count());
+            }else
+            {
+                Console.WriteLine("Directory '{0}' Doesn't Exist",dir);
+            }
         }
     }
 }
